@@ -4,7 +4,7 @@ A web application that allows users to upload an image and a style image to perf
 
 ---
 
-## 🚀 Features
+##  Features
 
 - Upload original and style images to swap faces.
 - Real-time AI face swapping using LightX API.
@@ -16,7 +16,7 @@ A web application that allows users to upload an image and a style image to perf
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
 - **Backend:** Node.js, Express.js
 - **Database:** MongoDB (using native driver, no ORM)
@@ -27,7 +27,7 @@ A web application that allows users to upload an image and a style image to perf
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 ```
 aejs/
 │
@@ -55,7 +55,7 @@ aejs/
 
 ---
 
-## ⚡ Installation
+##  Installation
 
 1. Clone the repository:
 
@@ -81,7 +81,7 @@ npm run dev
 The server will run at http://localhost:3000
 
 ---
-📝 Usage
+ Usage
 -
 Open the web app in your browser.
 
@@ -95,7 +95,9 @@ After processing, view your swapped image and download it.
 
 Navigate to /submissions to see all previous submissions.
 
-⚠️ Notes
+---
+ Notes
+-
 Ensure the image size does not exceed 5 MB.
 
 Phone number must be exactly 10 digits.
@@ -105,7 +107,7 @@ The LightX API requires images to be uploaded via the ImageUpload API; external 
 API-generated image URLs expire after 24 hours.
 
 ---
-🛡 Error Handling
+Error Handling
 -
 Validates user input on both frontend and backend.
 
@@ -114,7 +116,7 @@ Displays form errors and API errors with clear messages.
 Logs all errors to the console for debugging.
 
 ---
-🔗 Useful Links
+Useful Links
 -
 LightX AI Face Swap API Documentation
 
@@ -122,5 +124,5 @@ Bootstrap 5 Documentation
 
 Font Awesome
 
-💻 License
+License
 This project is MIT Licensed.
