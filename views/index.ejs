@@ -1,0 +1,110 @@
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <div class="card shadow">
+      <div class="card-header bg-primary text-white">
+        <h2 class="mb-0"><i class="fas fa-camera me-2"></i>Face Swap Form</h2>
+      </div>
+      <div class="card-body">
+        <% if (errors && errors.length > 0) { %>
+          <div class="alert alert-danger">
+            <h5><i class="fas fa-exclamation-triangle me-2"></i>Please fix the following errors:</h5>
+            <ul class="mb-0">
+              <% errors.forEach(error => { %>
+                <li><%= error.msg %></li>
+              <% }); %>
+            </ul>
+          </div>
+        <% } %>
+
+        <form id="faceSwapForm" action="/submit" method="POST" enctype="multipart/form-data">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="name" class="form-label">
+                  <i class="fas fa-user me-1"></i>Name *
+                </label>
+                <input type="text" class="form-control" id="name" name="name" 
+                       value="<%= formData?.name || '' %>" required
+                       pattern="[a-zA-Z\s]{4,30}" 
+                       title="Name must be 4-30 characters and contain only letters">
+                <div class="form-text">4-30 characters, letters only</div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="email" class="form-label">
+                  <i class="fas fa-envelope me-1"></i>Email *
+                </label>
+                <input type="email" class="form-control" id="email" name="email" 
+                       value="<%= formData?.email || '' %>" required>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="phone" class="form-label">
+              <i class="fas fa-phone me-1"></i>Phone Number *
+            </label>
+            <input type="tel" class="form-control" id="phone" name="phone" 
+                   value="<%= formData?.phone || '' %>" required
+                   pattern="[1-9][0-9]{9}" 
+                   title="Phone number must start with 1-9 and be exactly 10 digits">
+            <div class="form-text">10 digits only</div>
+          </div>
+
+          <div class="mb-4">
+            <label class="form-label"><i class="fas fa-image me-1"></i>Upload Input Image *</label>
+            <input type="file" name="image" accept="image/*" required>
+          </div>
+
+          <div class="mb-4">
+            <label class="form-label"><i class="fas fa-paint-brush me-1"></i>Upload Style Image *</label>
+            <input type="file" name="styleImage" accept="image/*" required>
+          </div>
+
+          <div class="mb-4">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="terms" name="terms" required>
+              <label class="form-check-label" for="terms">
+                I accept the <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">Terms & Conditions</a> *
+              </label>
+            </div>
+          </div>
+
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary btn-lg">
+              <i class="fas fa-magic me-2"></i>Swap Face
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Terms Modal -->
+<div class="modal fade" id="termsModal" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Terms & Conditions</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <h6>Image Processing Terms</h6>
+        <p>By using this service, you agree that:</p>
+        <ul>
+          <li>You have the right to use and modify the uploaded images</li>
+          <li>The processed images may be stored temporarily for service provision</li>
+          <li>You will not upload inappropriate, offensive, or copyrighted content</li>
+          <li>The service is provided as-is without warranty</li>
+        </ul>
+        <h6>Privacy Policy</h6>
+        <p>Your personal information and images are handled according to our privacy policy and are not shared with third parties.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">I Understand</button>
+      </div>
+    </div>
+  </div>
+</div>
