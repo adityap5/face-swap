@@ -40,9 +40,9 @@ const submitForm = async (req, res) => {
       createdAt: new Date(),
     });
 
-    res.render('success', { submission, message: '✅ Face swap completed successfully!' });
+    res.render('success', { submission, message: 'Face swap completed successfully!' });
   } catch (err) {
-    console.error('❌ Submission error:', err);
+    console.error('Submission error:', err);
     res.status(500).render('index', {
       errors: [{ msg: 'Submission failed. Please try again.' }],
       formData: req.body,

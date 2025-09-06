@@ -1,4 +1,3 @@
-// utils/validation.js
 const { body, validationResult } = require('express-validator');
 
 // Sanitization helper
@@ -55,7 +54,7 @@ const validate = (req, res, next) => {
 // Image validation
 const validateImage = (file) => {
   const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png'];
-  const maxSize = 2 * 1024 * 1024; // 2MB
+  const maxSize = 2 * 1024 * 1024; 
 
   if (!file) {
     return { isValid: false, error: 'Image is required' };

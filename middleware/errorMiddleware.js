@@ -1,8 +1,7 @@
-// middleware/errorMiddleware.js
 const multer = require('multer');
 const notFound = (req, res, next) => {
   if (req.originalUrl.startsWith('/.well-known')) {
-    return res.status(204).end(); // No Content
+    return res.status(204).end(); 
   }
   const error = new Error(`Not Found - ${req.originalUrl}`);
   res.status(404);

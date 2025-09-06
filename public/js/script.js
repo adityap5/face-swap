@@ -1,9 +1,9 @@
-// public/js/script.js
+
 class FaceSwapApp {
     constructor() {
         this.camera = null;
         this.stream = null;
-        this.facingMode = 'user'; // 'user' for front camera, 'environment' for back camera
+        this.facingMode = 'user'; 
         this.canvas = null;
         this.currentImageFile = null;
         
@@ -236,7 +236,7 @@ class FaceSwapApp {
 
     validateFile(file) {
         const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png'];
-        const maxSize = 2 * 1024 * 1024; // 2MB
+        const maxSize = 2 * 1024 * 1024; 
 
         if (!allowedTypes.includes(file.type)) {
             return { isValid: false, error: 'Only JPG, JPEG, and PNG images are allowed' };

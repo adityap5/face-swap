@@ -4,7 +4,7 @@ class LightXService {
   constructor() {
     this.apiKey = process.env.LIGHTX_API_KEY;
     this.baseUrl = "https://api.lightxeditor.com/external/api";
-    console.log("✅ Loaded LightX API Key:", !!this.apiKey); // Debugging
+    console.log("Loaded LightX API Key:", !!this.apiKey); 
   }
 
   // Upload image to LightX
@@ -19,7 +19,7 @@ class LightXService {
         },
         body: JSON.stringify({
           uploadType: "imageUrl",
-          size: imageBuffer.length, // Must be exact byte length
+          size: imageBuffer.length,
           contentType,
         }),
       });
@@ -30,7 +30,7 @@ class LightXService {
       }
 
       const uploadData = await uploadUrlResponse.json();
-      console.log("📩 Upload URL response:", uploadData);
+      console.log("Upload URL response:", uploadData);
 
       if (uploadData.statusCode !== 2000) {
         throw new Error(`Upload URL API error: ${uploadData.message}`);
@@ -47,8 +47,8 @@ class LightXService {
         throw new Error(`Failed to upload image: ${uploadResponse.status}`);
       }
 
-      console.log("✅ Image uploaded successfully");
-      return uploadData.body.imageUrl; // Permanent URL
+      console.log("Image uploaded successfully");
+      return uploadData.body.imageUrl; 
     } catch (error) {
       console.error("Image upload error:", error);
       throw new Error(`Image upload failed: ${error.message}`);
@@ -76,7 +76,7 @@ class LightXService {
       }
 
       const swapData = await swapResponse.json();
-      console.log("📩 Face swap response:", swapData);
+      console.log("Face swap response:", swapData);
 
       if (swapData.statusCode !== 2000) {
         throw new Error(`Face swap API error: ${swapData.message}`);
@@ -97,7 +97,7 @@ class LightXService {
     let retries = 0;
 
     while (retries < maxRetries) {
-      await new Promise((resolve) => setTimeout(resolve, 3000)); // wait 3s
+      await new Promise((resolve) => setTimeout(resolve, 3000));
 
       const statusResponse = await fetch(`${this.baseUrl}/v1/order-status`, {
         method: "POST",
@@ -114,7 +114,7 @@ class LightXService {
       }
 
       const statusData = await statusResponse.json();
-      console.log("📩 Status check response:", statusData);
+      console.log("Status check response:", statusData);
 
       if (statusData.statusCode !== 2000) {
         throw new Error(`Status API error: ${statusData.message}`);
@@ -123,16 +123,16 @@ class LightXService {
       const { status, output } = statusData.body;
 
       if (status === "active" && output) {
-        console.log("✅ Face swap completed:", output);
+        console.log("Face swap completed:", output);
         return output;
       } else if (status === "failed") {
-        throw new Error("❌ Face swap processing failed");
+        throw new Error("Face swap processing failed");
       }
 
       retries++;
     }
 
-    throw new Error("⏳ Face swap processing timed out");
+    throw new Error("Face swap processing timed out");
   }
 }
 
